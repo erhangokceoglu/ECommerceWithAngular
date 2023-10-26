@@ -1,4 +1,4 @@
-using API.Data.DataContext;
+using API.Infastructure.DataContext;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
