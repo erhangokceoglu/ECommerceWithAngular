@@ -1,4 +1,6 @@
+using API.Core.Interfaces;
 using API.Infastructure.DataContext;
+using API.Infastructure.Implements;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -14,6 +16,8 @@ builder.Services.AddDbContext<StoreContext>(x =>
         options.MigrationsAssembly(Assembly.GetAssembly(typeof(StoreContext))!.GetName().Name);
     });
 });
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
