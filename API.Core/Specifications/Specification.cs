@@ -9,6 +9,10 @@ namespace API.Core.Specifications
 {
     public class Specification<T> : ISpecification<T>
     {
+        public Specification()
+        {
+            
+        }
         public Specification(Expression<Func<T, bool>> criteria)
         {
             Criteria = criteria;
@@ -16,7 +20,7 @@ namespace API.Core.Specifications
 
         public Expression<Func<T, bool>> Criteria { get; }
 
-        public ICollection<Expression<Func<T, object>>> Includes => new List<Expression<Func<T, object>>>();
+        public ICollection<Expression<Func<T, object>>> Includes { get; } = new List<Expression<Func<T, object>>>();
 
         protected void AddInclude(Expression<Func<T, object>> includeExression)
         {
